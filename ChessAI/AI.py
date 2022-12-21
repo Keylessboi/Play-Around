@@ -3,6 +3,7 @@ from PIL import Image
 import sys
 import os
 os.environ['SDL_AUDIODRIVER'] = 'dsp'
+os.environ["SDL_VIDEODRIVER"] = "dummy"
 pygame.init()
 
 
@@ -38,7 +39,7 @@ pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
 
-images = {filename: pygame.image.load(filename + '_transparent.png') for filename in image_filenames}
+#images = {filename: pygame.image.load(filename + '_transparent.png') for filename in image_filenames}
 
 board = [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
