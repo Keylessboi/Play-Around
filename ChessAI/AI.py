@@ -17,6 +17,32 @@ pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
 
+# Load the images of the chess pieces
+black_bishop = pygame.image.load('black_bishop.png')
+black_king = pygame.image.load('black_king.png')
+black_knight = pygame.image.load('black_knight.png')
+black_pawn = pygame.image.load('black_pawn.png')
+black_queen = pygame.image.load('black_queen.png')
+black_rook = pygame.image.load('black_rook.png')
+white_bishop = pygame.image.load('white_bishop.png')
+white_king = pygame.image.load('white_king.png')
+white_knight = pygame.image.load('white_knight.png')
+white_pawn = pygame.image.load('white_pawn.png')
+white_queen = pygame.image.load('white_queen.png')
+white_rook = pygame.image.load('white_rook.png')
+
+# Set up the board and pieces
+board = [
+    ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
+    ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
+    ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'],
+]
+
 # Draw the board
 for row in range(8):
     for col in range(8):
@@ -25,6 +51,36 @@ for row in range(8):
         else:
             color = (0, 0, 0)
         pygame.draw.rect(screen, color, (col * square_size, row * square_size, square_size, square_size))
+
+# Draw the pieces
+# Draw the pieces
+for row in range(8):
+    for col in range(8):
+        piece = board[row][col]
+        if piece == 'r':
+            screen.blit(black_rook, (col * square_size, row * square_size))
+        elif piece == 'n':
+            screen.blit(black_knight, (col * square_size, row * square_size))
+        elif piece == 'b':
+            screen.blit(black_bishop, (col * square_size, row * square_size))
+        elif piece == 'q':
+            screen.blit(black_queen, (col * square_size, row * square_size))
+        elif piece == 'k':
+            screen.blit(black_king, (col * square_size, row * square_size))
+        elif piece == 'p':
+            screen.blit(black_pawn, (col * square_size, row * square_size))
+        elif piece == 'R':
+            screen.blit(white_rook, (col * square_size, row * square_size))
+        elif piece == 'N':
+            screen.blit(white_knight, (col * square_size, row * square_size))
+        elif piece == 'B':
+            screen.blit(white_bishop, (col * square_size, row * square_size))
+        elif piece == 'Q':
+            screen.blit(white_queen, (col * square_size, row * square_size))
+        elif piece == 'K':
+            screen.blit(white_king, (col * square_size, row * square_size))
+        elif piece == 'P':
+            screen.blit(white_pawn, (col * square_size, row * square_size))
 
 # Update the display
 pygame.display.update()
