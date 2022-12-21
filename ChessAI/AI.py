@@ -3,6 +3,7 @@ from PIL import Image
 import sys
 import os
 os.environ['SDL_AUDIODRIVER'] = 'dsp'
+pygame.init()
 
 
 image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png', 'img/black_queen.png', 'img/black_rook.png',
@@ -28,7 +29,7 @@ images = {}
 window_size = 400
 square_size = window_size // 8
 
-pygame.init()
+
 
 pygame.display.set_caption('Scuffed Chess ai')
 icon = pygame.Surface((1, 1))
