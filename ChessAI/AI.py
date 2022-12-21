@@ -1,28 +1,30 @@
 import pygame
 from PIL import Image
 import sys
+import os
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
 
 
 image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png', 'img/black_queen.png', 'img/black_rook.png',
                    'img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
 images = {}
 
-for filename in image_filenames:
-    try:
-        image = Image.open(filename)
-    except FileNotFoundError:
-        print(f'Error: image file {filename} not found.')
-        continue
+#for filename in image_filenames:
+#    try:
+#        image = Image.open(filename)
+#    except FileNotFoundError:
+#        print(f'Error: image file {filename} not found.')
+#        continue
 
     # Create a transparent image to use as the alpha channel
-    alpha = Image.new('L', image.size, 255)
-    image.alpha_composite(alpha)
-    images[filename[:-4]] = image
+#    alpha = Image.new('L', image.size, 255)
+#    image.alpha_composite(alpha)
+#    images[filename[:-4]] = image
 
 # Save the images with the removed background
-for filename, image in images.items():
-    image.save(filename + '_transparent.png')
-
+#for filename, image in images.items():
+#    image.save(filename + '_transparent.png')
+#
 window_size = 400
 square_size = window_size // 8
 
