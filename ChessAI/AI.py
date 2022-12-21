@@ -2,9 +2,9 @@ import pygame
 from PIL import Image
 import sys
 
-# Load the images of the chess pieces
-image_filenames = ['black_bishop.png', 'black_king.png', 'black_knight.png', 'black_pawn.png', 'black_queen.png', 'black_rook.png',
-                   'white_bishop.png', 'white_king.png', 'white_knight.png', 'white_pawn.png', 'white_queen.png', 'white_rook.png']
+
+image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png', 'img/black_queen.png', 'img/black_rook.png',
+                   'img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
 images = {}
 
 for filename in image_filenames:
@@ -101,8 +101,8 @@ while running:
             sys.exit()
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-            col = pos[0] // square_size
-            row = pos[1] // square_size
+            col = pos[0] 
+            row = pos[1] 
             if selected_piece:
                 # Move the piece
                 board[selected_pos[0]][selected_pos[1]] = ' '
@@ -116,22 +116,6 @@ while running:
                 if piece != ' ':
                     selected_piece = piece
                     selected_pos = (row, col)
-        elif event.type == pygame.MOUSEBUTTONUP:
-            pos = pygame.mouse.get_pos()
-            col = pos[0] // square_size
-            row = pos[1] // square_size
-            if selected_piece and (row, col) != selected_pos:
-                # Move the piece
-                if selected_pos is not None:
-                    board[selected_pos[0]][selected_pos[1]] = ' '
-                    board[row][col] = selected_piece
-                    selected_piece = None
-                    selected_pos = None
-                    draw_board()
-                board[row][col] = selected_piece
-                selected_piece = None
-                selected_pos = None
-                draw_board()
         if selected_piece:
             # Draw a highlight around the selected piece
             pygame.draw.rect(screen, (255, 0, 0), (selected_pos[1] * square_size, selected_pos[0] * square_size, square_size, square_size), 4)
