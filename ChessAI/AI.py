@@ -1,9 +1,8 @@
-import pygame
-from PIL import Image
 import sys
 import os
 import subprocess
 import pygame
+from PIL import Image
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
@@ -13,9 +12,7 @@ os.environ['SDL_AUDIODRIVER'] = 'dsp'
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 pygame.init()
 
-
-image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png', 'img/black_queen.png', 'img/black_rook.png',
-                   'img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
+image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png','img/black_queen.png','img/black_rook.png','img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
 images = {}
 
 
@@ -85,7 +82,6 @@ def draw_board():
                 elif piece == 'K':
                     image = images['white_king']
                 screen.blit(image, (j * square_size, i * square_size))
-                
 running = True
 while running:
     for event in pygame.event.get():
@@ -93,8 +89,8 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-            col = pos[0] 
-            row = pos[1] 
+            col = pos[0]
+            row = pos[1]
 # Inside the mouse click event handling block
         if selected_piece:
             board[selected_pos[0]][selected_pos[1]] = ' '
@@ -103,9 +99,13 @@ while running:
             selected_piece = None
             draw_board()
         else:
+            pos = pygame.mouse.get_pos()
+            col = pos[0]
+            row = pos[1]
             if board[row][col] != ' ':
                 selected_piece = board[row][col]
                 selected_pos = [row, col]
+                
 
         if selected_piece:
             # Draw a highlight around the selected piece
