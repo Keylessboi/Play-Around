@@ -1,14 +1,14 @@
-
+import pygame
 from PIL import Image
 import sys
 import os
 import subprocess
-
+import pygame
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 install("pygame")
-import pygame
+
 os.environ['SDL_AUDIODRIVER'] = 'dsp'
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 pygame.init()
