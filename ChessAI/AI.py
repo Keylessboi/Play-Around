@@ -24,7 +24,6 @@ pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
 
-#images = {filename: pygame.image.load(filename + '_transparent.png') for filename in image_filenames}
 
 board = [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
@@ -39,6 +38,7 @@ board = [
 
 selected_piece = None
 selected_pos = None
+selected_pos = []
 
 def draw_board():
     for i in range(8):
@@ -88,18 +88,18 @@ while running:
             pos = pygame.mouse.get_pos()
             col = pos[0] 
             row = pos[1] 
-            if selected_piece:
-                board[selected_pos[0]][selected_pos[1]] = ' '
+# Inside the mouse click event handling block
+        if selected_piece:
+            board[selected_pos[0]][selected_pos[1]] = ' '
+            selected_pos = [row, col]
+            board[row][col] = selected_piece
+            selected_piece = None
+            draw_board()
+        else:
+            if board[row][col] != ' ':
+                selected_piece = board[row][col]
                 selected_pos = [row, col]
-                board[row][col] = selected_piece
-                selected_piece = None
-                draw_board()
 
-            else:
-               piece = board[row][col]
-               if piece != ' ':
-                    selected_piece = piece
-                    selected_pos = (row, col)
         if selected_piece:
             # Draw a highlight around the selected piece
             pygame.draw.rect(screen, (255, 0, 0), (selected_pos[1] * square_size, selected_pos[0] * square_size, square_size, square_size), 4)
