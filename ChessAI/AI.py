@@ -7,10 +7,9 @@ def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 install("pygame")
-
-os.environ['SDL_AUDIODRIVER'] = 'dsp'
-os.environ["SDL_VIDEODRIVER"] = "dummy"
 pygame.init()
+os.environ['SDL_AUDIODRIVER'] = 'dsp'
+os.environ["SDL_VIDEODRIVER"] = 'dummy'
 
 image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png','img/black_queen.png','img/black_rook.png','img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
 images = {}
@@ -28,7 +27,7 @@ pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
 
-
+global board
 board = [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
     ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -59,8 +58,8 @@ def draw_board():
                     color = (0, 0, 0)
                 if piece == 'p':
                     image = images['black_pawn']
-                elif piece == 'r':
-                    image = images['black_rook']
+#                elif piece == 'r':
+#                    image = images['black_rook']
                 elif piece == 'n':
                     image = images['black_knight']
                 elif piece == 'b':
