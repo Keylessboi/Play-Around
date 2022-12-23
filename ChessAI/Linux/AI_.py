@@ -1,22 +1,23 @@
+def test(num):
+    print("Test " + str(num))
 import sys
 import os
-print("Test 1")
+test(1)
 import pygame
-print("Test 2")
+test(2)
 from PIL import Image
-print("Test 3")
+test(3)
 #pygame.init()
-print("Test 4")
-#os.environ['SDL_AUDIODRIVER'] = 'alsa'
+test(4)
+os.environ['SDL_AUDIODRIVER'] = 'alsa'
 os.environ["SDL_VIDEODRIVER"] = 'dummy'
-
+test(5)
 image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png','img/black_queen.png','img/black_rook.png','img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
 images = {}
-
-
+test(6)
 window_size = 400
 square_size = window_size // 8
-
+test(7)
 
 
 pygame.display.set_caption('Scuffed Chess ai')
@@ -25,7 +26,7 @@ icon.set_alpha(0)
 pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
-
+test(8)
 global board
 board = [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
@@ -37,11 +38,11 @@ board = [
     ['P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'],
     ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R']
 ]
-
+test(9)
 selected_piece = None
 selected_pos = None
 selected_pos = []
-
+test(10)
 def draw_board():
     for i in range(8):
         for j in range(8):
@@ -57,8 +58,8 @@ def draw_board():
                     color = (0, 0, 0)
                 if piece == 'p':
                     image = images['black_pawn']
-#                elif piece == 'r':
-#                    image = images['black_rook']
+                elif piece == 'r':
+                    image = images['black_rook']
                 elif piece == 'n':
                     image = images['black_knight']
                 elif piece == 'b':
@@ -80,7 +81,9 @@ def draw_board():
                 elif piece == 'K':
                     image = images['white_king']
                 screen.blit(image, (j * square_size, i * square_size))
+test(11)
 running = True
+test(12)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -108,6 +111,6 @@ while running:
         if selected_piece:
             # Draw a highlight around the selected piece
             pygame.draw.rect(screen, (255, 0, 0), (selected_pos[1] * square_size, selected_pos[0] * square_size, square_size, square_size), 4)
-
+test(13)
 # Quit pygame
 pygame.quit()
