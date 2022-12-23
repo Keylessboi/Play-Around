@@ -1,14 +1,13 @@
 import sys
 import os
-import subprocess
+print("Test 1")
 import pygame
+print("Test 2")
 from PIL import Image
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install("pygame")
-pygame.init()
-os.environ['SDL_AUDIODRIVER'] = 'dsp'
+print("Test 3")
+#pygame.init()
+print("Test 4")
+#os.environ['SDL_AUDIODRIVER'] = 'alsa'
 os.environ["SDL_VIDEODRIVER"] = 'dummy'
 
 image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png','img/black_queen.png','img/black_rook.png','img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
