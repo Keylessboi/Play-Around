@@ -2,7 +2,6 @@ import sys
 import os
 import subprocess
 import pygame
-<<<<<<< HEAD:ChessAI/AI.py
 import pygame.image
 from PIL import Image
 
@@ -16,18 +15,10 @@ except ImportError:
     install("pygame")
     import pygame
 
-=======
-from PIL import Image
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-install("pygame")
->>>>>>> 41ea3c8c1effc08dfe4946bd586e0108d1888b84:ChessAI/AI_.py
 pygame.init()
 os.environ['SDL_AUDIODRIVER'] = 'alsa'
 os.environ["SDL_VIDEODRIVER"] = 'dummy'
 
-<<<<<<< HEAD:ChessAI/AI.py
 # Load the images and store them in a dictionary
 images = {
     'black_pawn': pygame.image.load('img/black_pawn.png'),
@@ -45,13 +36,6 @@ images = {
 }
 
 window_size = 800
-=======
-image_filenames = ['img/black_bishop.png', 'img/black_king.png', 'img/black_knight.png', 'img/black_pawn.png','img/black_queen.png','img/black_rook.png','img/white_bishop.png', 'img/white_king.png', 'img/white_knight.png', 'img/white_pawn.png', 'img/white_queen.png', 'img/white_rook.png']
-images = {}
-
-
-window_size = 400
->>>>>>> 41ea3c8c1effc08dfe4946bd586e0108d1888b84:ChessAI/AI_.py
 square_size = window_size // 8
 
 pygame.display.set_caption('Scuffed Chess ai')
@@ -61,11 +45,7 @@ pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((window_size, window_size))
 screen.fill((255, 255, 255))
 
-<<<<<<< HEAD:ChessAI/AI.py
 # Initialize the board and other variables
-=======
-global board
->>>>>>> 41ea3c8c1effc08dfe4946bd586e0108d1888b84:ChessAI/AI_.py
 board = [
     ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'],
     ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
@@ -101,8 +81,8 @@ def draw_board():
                 # Load the image for the piece
                 if piece == 'p':
                     image = images['black_pawn']
-#                elif piece == 'r':
-#                    image = images['black_rook']
+                elif piece == 'r':
+                    image = images['black_rook']
                 elif piece == 'n':
                     image = images['black_knight']
                 elif piece == 'b':
@@ -130,7 +110,6 @@ def draw_board():
                                       square_size),
                                      4)
                 screen.blit(image, (j * square_size, i * square_size))
-<<<<<<< HEAD:ChessAI/AI.py
 
 selected_piece = None
 selected_pos = None
@@ -255,8 +234,6 @@ draw_board()
 pygame.display.flip()
 running = True
 
-=======
->>>>>>> 41ea3c8c1effc08dfe4946bd586e0108d1888b84:ChessAI/AI_.py
 running = True
 while running:
     draw_board()
@@ -267,7 +244,6 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-<<<<<<< HEAD:ChessAI/AI.py
             col = pos[0] // square_size
             row = pos[1] // square_size
             if selected_piece:
@@ -294,28 +270,5 @@ while running:
                         selected_pos = [row, col]
                         draw_board()
                         pygame.display.flip()
-=======
-            col = pos[0]
-            row = pos[1]
-# Inside the mouse click event handling block
-        if selected_piece:
-            board[selected_pos[0]][selected_pos[1]] = ' '
-            selected_pos = [row, col]
-            board[row][col] = selected_piece
-            selected_piece = None
-            draw_board()
-        else:
-            pos = pygame.mouse.get_pos()
-            col = pos[0]
-            row = pos[1]
-            if board[row][col] != ' ':
-                selected_piece = board[row][col]
-                selected_pos = [row, col]
-                
-
-        if selected_piece:
-            # Draw a highlight around the selected piece
-            pygame.draw.rect(screen, (255, 0, 0), (selected_pos[1] * square_size, selected_pos[0] * square_size, square_size, square_size), 4)
->>>>>>> 41ea3c8c1effc08dfe4946bd586e0108d1888b84:ChessAI/AI_.py
 
 pygame.quit()
