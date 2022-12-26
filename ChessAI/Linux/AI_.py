@@ -105,6 +105,7 @@ while running:
             pos = pygame.mouse.get_pos()
             col = pos[0]
             row = pos[1]
+            board = board
             if board[row][col] != ' ':
                 selected_piece = board[row][col]
                 selected_pos = [row, col]
