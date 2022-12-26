@@ -1,1 +1,1 @@
-# eat doodo
+# Small projects
