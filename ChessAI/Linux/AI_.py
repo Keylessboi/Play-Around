@@ -59,29 +59,29 @@ def draw_board(image):
                 else:
                     color = (0, 0, 0)
                 if piece == 'p':
-                    Image = images['black_pawn']
-#                elif piece == 'r':
-#                    Image = images['black_rook']
+                    Image = pygame.image.load(images['black_pawn'])
+                elif piece == 'r':
+                    Image = pygame.image.load(images['black_rook'])
                 elif piece == 'n':
-                    Image = images['black_knight']
+                    Image = pygame.image.load(images['black_knight'])
                 elif piece == 'b':
-                    Image = images['black_bishop']
+                    Image = pygame.image.load(images['black_bishop'])
                 elif piece == 'q':
-                    Image = images['black_queen']
+                    Image = pygame.image.load(images['black_queen'])
                 elif piece == 'k':
-                    Image = images['black_king']
+                    Image = pygame.image.load(images['black_king'])
                 elif piece == 'P':
-                    Image = images['white_pawn']
+                    Image = pygame.image.load(images['white_pawn'])
                 elif piece == 'R':
-                    Image = images['white_rook']
+                    Image = pygame.image.load(images['white_rook'])
                 elif piece == 'N':
-                    Image = images['white_knight']
+                    Image = pygame.image.load(images['white_knight'])
                 elif piece == 'B':
-                    Image = images['white_bishop']
+                    Image = pygame.image.load(images['white_bishop'])
                 elif piece == 'Q':
-                    Image = images['white_queen']
+                    Image = pygame.image.load(images['white_queen'])
                 elif piece == 'K':
-                    Image = images['white_king']
+                    Image = pygame.image.load(images['white_king'])
                 screen.blit(image, (j * square_size, i * square_size))
 test(11)
 running = True
