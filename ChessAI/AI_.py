@@ -130,6 +130,7 @@ directions = {
 }
 
 
+
 # Define a function to check for obstructions on the board
 def check_obstructions(board, start, end, direction):
     row, col = start
@@ -170,8 +171,6 @@ def validate_move(board, start, end, piece, current_player):
         rules = king_rules
     else:
         return False
-
-    # Check the type of move being made
     row_diff = end[0] - start[0]
     col_diff = end[1] - start[1]
     if 'horizontal' in rules and row_diff == 0:
@@ -194,37 +193,10 @@ def validate_move(board, start, end, piece, current_player):
     else:
         return False
 
-    # Check for captures
     if check_capture(board, start, end, current_player):
         return True
     return False
 
-
-
-if selected_piece:
-    if validate_move(board, selected_pos, [row, col], selected_piece, current_player):
-        board[selected_pos[0]][selected_pos[1]] = ' '
-        selected_pos = [row, col]
-        board[row][col] = selected_piece
-        selected_piece = None
-        turn_counter += 1
-        current_player = 'white' if current_player == 'black' else 'black'
-        draw_board()
-        pygame.display.flip()
-    else:
-        selected_piece = None
-        draw_board()
-        pygame.display.flip()
-else:
-    pos = pygame.mouse.get_pos()
-    col = pos[0] // square_size
-    row = pos[1] // square_size
-    if board[row][col] != ' ':
-        if (board[row][col].isupper() and current_player == 'white') or (board[row][col].islower() and current_player == 'black'):
-            selected_piece = board[row][col]
-            selected_pos = [row, col]
-            draw_board()
-            pygame.display.flip()
 
 
 for name, image in images.items():
@@ -244,22 +216,27 @@ while running:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
-            col = pos[0] // square_size
-            row = pos[1] // square_size
+            col = pos[0]
+            row = pos[1]
+            print(validate_move(board, selected_pos, [row, col], selected_piece, current_player))
             if selected_piece:
-                if (selected_piece.isupper() and current_player == 'white') or (selected_piece.islower() and current_player == 'black'):
-                    board[selected_pos[0]][selected_pos[1]] = ' '
-                    selected_pos = [row, col]
-                    board[row][col] = selected_piece
-                    selected_piece = None
-                    turn_counter += 1
-                    current_player = 'white' if current_player == 'black' else 'black'
-                    draw_board()
-                    pygame.display.flip()
-                else:
-                    selected_piece = None
-                    draw_board()
-                    pygame.display.flip()
+                print("FART")
+                if validate_move(board, selected_pos, [row, col], selected_piece, current_player):
+                    print("NOT FART")
+                    if (selected_piece.isupper() and current_player == 'white') or (selected_piece.islower() and current_player == 'black'):
+                        board[selected_pos[0]][selected_pos[1]] = ' '
+                        selected_pos = [row, col]
+                        board[row][col] = selected_piece
+                        selected_piece = None
+                        turn_counter += 1
+                        current_player = 'white' if current_player == 'black' else 'black'
+                        draw_board()
+                        pygame.display.flip()
+                    else:
+                        print("NO")
+                        selected_piece = None
+                        draw_board()
+                        pygame.display.flip()
             else:
                 pos = pygame.mouse.get_pos()
                 col = pos[0] // square_size
